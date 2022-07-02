@@ -115,10 +115,10 @@ impl From<&str> for Config {
 
                 let launch_type_str = match item.get("launch_type") {
                     Some(Value::String(value)) => value.as_str(),
-                    _ => "application",
+                    _ => "command",
                 };
 
-                let launch_command = if launch_type_str == "application_with_arg" {
+                let launch_command = if launch_type_str == "app_with_arg" {
                     let tokens = launch_command_value
                         .as_array()
                         .unwrap()
@@ -134,7 +134,7 @@ impl From<&str> for Config {
                         .to_string();
 
                     match launch_type_str {
-                        "application" => LaunchOption::Application(command_string),
+                        "app" => LaunchOption::Application(command_string),
                         "command" => LaunchOption::Command(command_string),
                         _ => LaunchOption::Application(command_string),
                     }

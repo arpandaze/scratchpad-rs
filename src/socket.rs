@@ -7,12 +7,20 @@ use std::str;
 use std::time::Duration;
 
 fn format_message(message: &[&str]) -> Vec<u8> {
-    let mut command = String::from(message.join("\0"));
+    let mut command = Vec::from([0x0, 0x0, 0x0, 0x0]);
 
-    // Commands must be \0\0 terminated
-    command.push_str("\0\0");
+    for token in message {
+        command.append(&mut token.as_bytes().to_vec());
+        command.push(0x0);
+    }
+    command.push(0x0);
 
-    return command.as_bytes().to_vec();
+    // First byte must denote number of bytes in message part minus the padding
+    // fixme: First bytes denotes size but only first byte is being used here
+    // Reference: https://github.com/koekeishiya/yabai/issues/1372#issuecomment-1226701120
+    command[0] = (command.len() - 4) as u8;
+
+    return command;
 }
 
 pub fn get_socket_stream() -> Result<UnixStream> {

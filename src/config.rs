@@ -89,10 +89,10 @@ impl From<&str> for Config {
                     .as_array()
                     .unwrap();
 
-                let position: [u16; 2] = position_value
+                let position: [i16; 2] = position_value
                     .iter()
-                    .map(|item| item.as_integer().unwrap() as u16)
-                    .collect::<Vec<u16>>()
+                    .map(|item| item.as_integer().unwrap() as i16)
+                    .collect::<Vec<i16>>()
                     .try_into()
                     .expect("Invalid position configuration!");
 
@@ -102,10 +102,10 @@ impl From<&str> for Config {
                     .as_array()
                     .unwrap();
 
-                let size: [u16; 2] = size_value
+                let size: [i16; 2] = size_value
                     .iter()
-                    .map(|item| item.as_integer().unwrap() as u16)
-                    .collect::<Vec<u16>>()
+                    .map(|item| item.as_integer().unwrap() as i16)
+                    .collect::<Vec<i16>>()
                     .try_into()
                     .expect("Invalid size configuration!");
 

@@ -20,7 +20,7 @@ pub struct Window {
     pub subrole: String,
     pub display: u8,
     pub space: u8,
-    pub level: u16,
+    pub level: i16,
     pub opacity: f32,
     pub split_type: String,
     pub stack_index: u8,
@@ -28,7 +28,6 @@ pub struct Window {
     pub can_resize: bool,
     pub has_focus: bool,
     pub has_shadow: bool,
-    pub has_border: bool,
     pub has_parent_zoom: bool,
     pub has_fullscreen_zoom: bool,
     pub is_native_fullscreen: bool,
@@ -37,7 +36,6 @@ pub struct Window {
     pub is_hidden: bool,
     pub is_floating: bool,
     pub is_sticky: bool,
-    pub is_topmost: bool,
     pub is_grabbed: bool,
 }
 

@@ -15,12 +15,12 @@ pub enum Target {
 
 #[derive(Debug, Clone)]
 pub struct Coordinate {
-    pub x: u16,
-    pub y: u16,
+    pub x: i16,
+    pub y: i16,
 }
 
-impl From<[u16; 2]> for Coordinate {
-    fn from(nums: [u16; 2]) -> Self {
+impl From<[i16; 2]> for Coordinate {
+    fn from(nums: [i16; 2]) -> Self {
         return Self {
             x: nums[0],
             y: nums[1],

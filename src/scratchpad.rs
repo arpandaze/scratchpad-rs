@@ -158,7 +158,7 @@ impl Scratchpad {
             LaunchOption::ApplicationWithArgs(application, args) => SysCommand::new("open")
                 .arg("-n")
                 .arg(format!("/Applications/{}", application))
-                .arg("--args")
+                .arg("--")
                 .args(args)
                 .spawn()?,
 
